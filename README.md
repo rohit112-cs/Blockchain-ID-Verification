@@ -168,15 +168,17 @@ View verification status
 
 Interact fully via blockchain on Ganache
 
-## 👨‍💻 Team – The Solution Seekers  
-**Team ID:** ISB-III-T033  
+```
+## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
 
-| Name | Role / Responsibility | Email |
-|------|------------------------|--------|
-| **Himanshi Negi** *(Team Lead)* | Smart Contract Deployment & Logic | [hnegiii15@gmail.com](mailto:hnegiii15@gmail.com) |
-| **Rohit Pandey** | Hashing Implementation & Blockchain Integration | [iamrohitpandey2000@gmail.com](mailto:iamrohitpandey2000@gmail.com) |
-| **Krish Joshi** | Web Portal Development (Python) | [joshikrish2606@gmail.com](mailto:joshikrish2606@gmail.com) |
-| **Swayam Gupta** | System Testing & Validation | [gswayam971@gmail.com](mailto:gswayam971@gmail.com) |
+| **Name** | **Role** | **Email** |
+|-----------|-----------|-----------|
+| Himanshi Negi *(Team Lead)* | Smart Contract Deployment & Logic | hnegiii15@gmail.com |
+| Rohit Pandey | Hashing Implementation & Blockchain Integration | iamrohitpandey2000@gmail.com |
+| Krish Joshi | Web Portal Development (Python) | joshikrish2606@gmail.com |
+| Swayam Gupta | System Testing & Validation | gswayam971@gmail.com |
+
+```
 
 
 
