@@ -92,17 +92,13 @@ venv\Scripts\activate
 📦 3️⃣ Install Required Dependencies
 ```
 Install all Python libraries needed for running and deploying the project.
-
-    pip install web3 vyper colorama hexbytes
+pip install web3 vyper colorama hexbytes
 ```
 🔗 4️⃣ Start Local Blockchain (Ganache)
 ```
 Make sure Ganache is running and configured properly.
-
 Open Ganache GUI or run Ganache CLI
-
 Confirm that it’s using the default RPC endpoint:
-
 http://127.0.0.1:8545
 
 Ensure at least 10 pre-funded accounts are visible (Ganache default).
@@ -181,9 +177,9 @@ View verification status
 Interact fully via blockchain on Ganache
 ```
 
-```
-## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
 
+## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
+```
 | **Name** | **Role** | **Email** |
 |-----------|-----------|-----------|
 | Himanshi Negi *(Team Lead)* | Smart Contract Deployment & Logic | hnegiii15@gmail.com |
