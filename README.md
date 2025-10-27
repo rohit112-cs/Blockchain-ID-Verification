@@ -42,7 +42,7 @@ This system demonstrates how blockchain can eliminate third-party intermediaries
 ---
 
 ## 🏗️ Project Structure
-
+```
 Blockchain-ID-Verification/
 │
 ├── contracts/
@@ -65,6 +65,7 @@ Blockchain-ID-Verification/
 ├── config.json # Stores deployed contract address & owner info
 ├── venv/ # Python virtual environment folder
 └── README.md # Project documentation
+```
 ---
 
 ## ⚙️ Setup Instructions
