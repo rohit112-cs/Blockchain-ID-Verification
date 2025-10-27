@@ -177,7 +177,7 @@ View verification status
 Interact fully via blockchain on Ganache
 ```
 
-
+```
 ## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
 ```
 | **Name** | **Role** | **Email** |
@@ -187,7 +187,6 @@ Interact fully via blockchain on Ganache
 | Krish Joshi | Web Portal Development (Python) | joshikrish2606@gmail.com |
 | Swayam Gupta | System Testing & Validation | gswayam971@gmail.com |
 
-```
 
 📊 Project Progress
 ```
