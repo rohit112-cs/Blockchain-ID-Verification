@@ -103,8 +103,7 @@ ABI and Bytecode will be stored in the build/ directory.
 💻 CLI Interface – Manage Users
 Run the CLI tool:
 
-bash
-Copy code
+
 python scripts/manage_user.py
 Menu Options
 Option	Action
@@ -130,8 +129,11 @@ get_user_hash() / is_verified() → View user’s hash & verification status.
 
 🧩 Future Enhancements
 🔗 Deploy contract on Ethereum Testnet (Sepolia or Goerli)
+
 🌐 Develop a web-based front-end with MetaMask integration
+
 📦 Use IPFS for decentralized storage of documents
+
 🧰 Add multi-user access control and logging
 
 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
