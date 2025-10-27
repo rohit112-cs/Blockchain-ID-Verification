@@ -79,20 +79,24 @@ Clone the repository from GitHub:
 ```bash
 git clone https://github.com/rohit112-cs/Blockchain-ID-Verification.git
 cd Blockchain-ID-Verification
+```
 
 🧱 2️⃣ Create and Activate Virtual Environment
-🪟 For Windows (PowerShell):
-    python -m venv venv
-    venv\Scripts\activate
+```
+For Windows (PowerShell):
+
+python -m venv venv
+venv\Scripts\activate
+```
 
 📦 3️⃣ Install Required Dependencies
-
+```
 Install all Python libraries needed for running and deploying the project.
 
     pip install web3 vyper colorama hexbytes
-
+```
 🔗 4️⃣ Start Local Blockchain (Ganache)
-
+```
 Make sure Ganache is running and configured properly.
 
 Open Ganache GUI or run Ganache CLI
@@ -102,9 +106,9 @@ Confirm that it’s using the default RPC endpoint:
 http://127.0.0.1:8545
 
 Ensure at least 10 pre-funded accounts are visible (Ganache default).
-
+```
 🚀 5️⃣ Deploy the Smart Contract
-
+```
 Compile and deploy the Vyper contract to your local blockchain.
 
 python scripts/deploy_cont.py
@@ -120,15 +124,15 @@ Create:
 
    build/IdentityVerification.json → ABI & Bytecode
    config.json → Contract address & admin account
-
+```
 🧮 7️⃣ CLI Menu Options
+```
 Option	Description
 1️⃣	Register a new user (stores document hash)
 2️⃣	Verify a user (admin-only)
 3️⃣	Check verification status
 4️⃣	Revoke verification (admin-only)
 5️⃣	Exit CLI
-
 
 🧠 Example Workflow
 
@@ -139,9 +143,9 @@ Option	Description
 5️⃣ Check status → Option 3
 6️⃣ Revoke and re-register → Option 4 then 1
 
-
+```
 🧱 8️⃣ Folder Artifacts After Successful Setup
-
+```
 Blockchain-ID-Verification/
 ├── build/IdentityVerification.json   # Compiled contract ABI + bytecode
 ├── config.json                       # Contract address & admin info
@@ -149,9 +153,9 @@ Blockchain-ID-Verification/
 ├── scripts/                          # Deployment & management scripts
 ├── utils/                            # Hashing functions
 └── venv/                             # Virtual environment
-
+```
 🧩 9️⃣ Troubleshooting
-
+```
 Issue	Fix
 ModuleNotFoundError: No module named 'web3'	Run pip install web3 inside your virtual environment
 Cannot connect to Ganache	Make sure Ganache is running at http://127.0.0.1:8545
@@ -167,6 +171,7 @@ Verify or revoke users
 View verification status
 
 Interact fully via blockchain on Ganache
+```
 
 ```
 ## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
@@ -181,10 +186,11 @@ Interact fully via blockchain on Ganache
 ```
 
 
-
+```
 📊 Project Progress
 
 ✅ Smart Contract Development – Completed
 ✅ Blockchain Integration (Web3.py) – Completed
 ⚙️ Frontend Portal – Under Development
 📘 Testing & Documentation – In Progress
+```
