@@ -188,11 +188,11 @@ Interact fully via blockchain on Ganache
 | Swayam Gupta | System Testing & Validation | gswayam971@gmail.com |
 
 ```
-```
+
 📊 Project Progress
+```
 ✅ Smart Contract Development – Completed
 ✅ Blockchain Integration (Web3.py) – Completed
 ⚙️ Frontend Portal – Under Development
 📘 Testing & Documentation – In Progress
-
 ```
