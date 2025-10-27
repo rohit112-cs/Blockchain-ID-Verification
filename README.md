@@ -177,7 +177,7 @@ View verification status
 Interact fully via blockchain on Ganache
 ```
 
-
+```
 ## 👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
 ```
 | **Name** | **Role** | **Email** |
