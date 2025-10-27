@@ -157,10 +157,18 @@ Blockchain-ID-Verification/
 🧩 9️⃣ Troubleshooting
 ```
 Issue	Fix
-ModuleNotFoundError: No module named 'web3'	Run pip install web3 inside your virtual environment
-Cannot connect to Ganache	Make sure Ganache is running at http://127.0.0.1:8545
-invalid opcode error	Redeploy the contract — delete build/ and config.json, then rerun deploy_cont.py
-ModuleNotFoundError: No module named 'utils'	Ensure utils/__init__.py exists (even empty)
+```
+| **Issue** | **Possible Cause** | **Solution / Fix** |
+|------------|--------------------|--------------------|
+| `ModuleNotFoundError: No module named 'web3'` | Required Python packages not installed | Run `pip install web3 vyper colorama hexbytes` inside the virtual environment |
+| `ModuleNotFoundError: No module named 'utils'` | Python cannot find the `utils` package | Ensure there’s a file named `__init__.py` inside the `utils/` folder |
+| `FileNotFoundError: build/IdentityVerification.json` | Contract not yet deployed | Run `python scripts/deploy_cont.py` first to compile and deploy the contract |
+| `execution reverted: invalid opcode` | Smart contract logic error or incorrect function call | Check contract version (`vyper --version`) and ensure the function arguments match |
+| `❌ Failed to connect to Ganache` | Ganache not running or incorrect RPC URL | Start Ganache and verify the network URL is `http://127.0.0.1:8545` |
+| `Permission denied: Only owner can verify` | Non-admin account attempting verification | Only the contract owner (deployer) can verify or revoke users |
+| `AssertionError: User already registered` | Attempting to re-register an existing user | Use “Revoke Verification” before re-registering the same user |
+| CLI shows no response after running | Missing or incorrect command execution | Run scripts using `python -m scripts.manage_user` instead of direct file execution |
+```
 
 ✅ Once all steps are done, your system will be ready to:
 
