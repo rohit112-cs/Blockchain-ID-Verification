@@ -1,0 +1,5 @@
+{
+  "provider": "http://127.0.0.1:8545",
+  "deployer": "0x7FFe31b04Be8F6A8D2b1F37C9E6E65a725c5747f",
+  "contract_address": "0x4Dcb1b416B50545b1886245025b89917A969e27C"
+}

@@ -1,50 +1,53 @@
-# scripts/deploy_cont.py
 from web3 import Web3
-import json
-import os
-import sys
+from vyper import compile_code
+import json, os, pathlib
 
-# 1️⃣ Connect to local blockchain (Ganache)
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
+def main():
+    ROOT = pathlib.Path(__file__).resolve().parents[1]
+    BUILD_DIR = ROOT / "build"
+    CONFIG_PATH = ROOT / "config.json"
+    CONTRACT_PATH = ROOT / "contracts" / "IdentityVerification.vy"
 
-if not w3.is_connected():
-    print("❌ Unable to connect to Ganache. Check your blockchain node.")
-    sys.exit(1)
+    os.makedirs(BUILD_DIR, exist_ok=True)
 
-print("✅ Connected to Ganache")
+    w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+    assert w3.is_connected(), "❌ Failed to connect to Ganache"
 
-# 2️⃣ Load compiled contract JSON (ABI + bytecode)
-build_path = os.path.join("build", "IdentityVerification.json")
-if not os.path.exists(build_path):
-    print(f"❌ Build file not found: {build_path}")
-    sys.exit(1)
+    owner = w3.eth.accounts[0]
+    print(f"Using owner: {owner}")
 
-with open(build_path) as f:
-    contract_data = json.load(f)
+    
+    with open(CONTRACT_PATH, "r") as f:
+        source_code = f.read()
 
-abi = contract_data.get("abi")
-bytecode = contract_data.get("bytecode") or contract_data.get("bytecode_runtime")
+    compiled = compile_code(source_code, output_formats=["abi", "bytecode"])
+    abi = compiled["abi"]
+    bytecode = compiled["bytecode"]
 
-if not abi or not bytecode:
-    print("❌ ABI or bytecode missing in build file!")
-    sys.exit(1)
 
-# 3️⃣ Choose deployer account (Ganache first account)
-deployer = w3.eth.accounts[0]
-print(f"👤 Deploying from account: {deployer}")
+    build_data = {"abi": abi, "bytecode": bytecode}
+    with open(BUILD_DIR / "IdentityVerification.json", "w") as f:
+        json.dump(build_data, f, indent=2)
 
-# 4️⃣ Deploy contract
-contract = w3.eth.contract(abi=abi, bytecode=bytecode)
+    
+    contract = w3.eth.contract(abi=abi, bytecode=bytecode)
+    tx_hash = contract.constructor().transact({"from": owner})
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    contract_address = tx_receipt.contractAddress
 
-print("⏳ Deploying contract...")
-tx_hash = contract.constructor().transact({"from": deployer})
-tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    print("✅ Contract deployed successfully!")
+    print(f"📜 Contract Address: {contract_address}")
 
-print(f"✅ Contract deployed at: {tx_receipt.contractAddress}")
+   
+    config = {
+        "provider": "http://127.0.0.1:8545",
+        "deployer": owner,
+        "contract_address": contract_address,
+    }
+    with open(CONFIG_PATH, "w") as f:
+        json.dump(config, f, indent=2)
 
-# 5️⃣ Save deployed contract info
-config_path = os.path.join("config.json")
-with open(config_path, "w") as f:
-    json.dump({"contract_address": tx_receipt.contractAddress, "deployer": deployer}, f)
+    print("🧱 Build + config files saved.")
 
-print(f"💾 Contract info saved to {config_path}")
+if __name__ == "__main__":
+    main()

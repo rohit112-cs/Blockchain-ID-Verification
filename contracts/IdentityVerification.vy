@@ -1,30 +1,39 @@
-# IdentityVerification.vy
-# Vyper smart contract for identity registration and verification
+# SPDX-License-Identifier: MIT
+# @version ^0.4.3
 
 owner: public(address)
-verified_users: public(HashMap[address, bool])
 user_hashes: public(HashMap[address, bytes32])
+verified: public(HashMap[address, bool])
 
 @deploy
 def __init__():
     self.owner = msg.sender
 
 @external
-def register_identity(doc_hash: bytes32):
+def register_user(user_hash: bytes32):
     assert self.user_hashes[msg.sender] == empty(bytes32), "User already registered"
-    self.user_hashes[msg.sender] = doc_hash
+    self.user_hashes[msg.sender] = user_hash
+    self.verified[msg.sender] = False
 
 @external
 def verify_user(user: address):
-    assert msg.sender == self.owner, "Only admin can verify"
-    self.verified_users[user] = True
+    assert msg.sender == self.owner, "Only owner can verify"
+    assert self.user_hashes[user] != empty(bytes32), "User not registered"
+    self.verified[user] = True
 
 @external
 def revoke_verification(user: address):
-    assert msg.sender == self.owner, "Only admin can revoke"
-    self.verified_users[user] = False
+    assert msg.sender == self.owner, "Only owner can revoke"
+    
+    self.user_hashes[user] = empty(bytes32)
+    self.verified[user] = False
+
+@view
+@external
+def get_user_hash(user: address) -> bytes32:
+    return self.user_hashes[user]
 
 @view
 @external
 def is_verified(user: address) -> bool:
-    return self.verified_users[user]
+    return self.verified[user]

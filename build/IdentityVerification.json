@@ -1,1 +1,127 @@
-[{"stateMutability": "nonpayable", "type": "function", "name": "register_identity", "inputs": [{"name": "doc_hash", "type": "bytes32"}], "outputs": []}, {"stateMutability": "nonpayable", "type": "function", "name": "verify_user", "inputs": [{"name": "user", "type": "address"}], "outputs": []}, {"stateMutability": "nonpayable", "type": "function", "name": "revoke_verification", "inputs": [{"name": "user", "type": "address"}], "outputs": []}, {"stateMutability": "view", "type": "function", "name": "is_verified", "inputs": [{"name": "user", "type": "address"}], "outputs": [{"name": "", "type": "bool"}]}, {"stateMutability": "view", "type": "function", "name": "owner", "inputs": [], "outputs": [{"name": "", "type": "address"}]}, {"stateMutability": "view", "type": "function", "name": "verified_users", "inputs": [{"name": "arg0", "type": "address"}], "outputs": [{"name": "", "type": "bool"}]}, {"stateMutability": "view", "type": "function", "name": "user_hashes", "inputs": [{"name": "arg0", "type": "address"}], "outputs": [{"name": "", "type": "bytes32"}]}, {"stateMutability": "nonpayable", "type": "constructor", "inputs": [], "outputs": []}]
+{
+  "abi": [
+    {
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "name": "register_user",
+      "inputs": [
+        {
+          "name": "user_hash",
+          "type": "bytes32"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "name": "verify_user",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "name": "revoke_verification",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_user_hash",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "is_verified",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "user_hashes",
+      "inputs": [
+        {
+          "name": "arg0",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "verified",
+      "inputs": [
+        {
+          "name": "arg0",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "stateMutability": "nonpayable",
+      "type": "constructor",
+      "inputs": [],
+      "outputs": []
+    }
+  ],
+  "bytecode": "0x3461001957335f556103de61001d610000396103de610000f35b5f80fd5f3560e01c60026006820660011b6103d201601e395f51565b63301b166781186103ca576024361034176103ce576001336020525f5260405f2054156100b05760208060a05260176040527f5573657220616c7265616479207265676973746572656400000000000000000060605260408160a001603782825e8051806020830101601f825f03163682375050601f19601f8251602001011690509050810190506308c379a060805280600401609cfd5b6004356001336020525f5260405f20555f6002336020525f5260405f2055005b635c475bb38118610204576024361034176103ce576004358060a01c6103ce576040525f5433181561016d5760208060c05260156060527f4f6e6c79206f776e65722063616e20766572696679000000000000000000000060805260608160c001603582825e8051806020830101601f825f03163682375050601f19601f8251602001011690509050810190506308c379a060a0528060040160bcfd5b60016040516020525f5260405f20546101f15760208060c05260136060527f55736572206e6f7420726567697374657265640000000000000000000000000060805260608160c001603382825e8051806020830101601f825f03163682375050601f19601f8251602001011690509050810190506308c379a060a0528060040160bcfd5b600160026040516020525f5260405f2055005b638f9bc2a381186103ca576024361034176103ce576004358060a01c6103ce576040525f543318156102a15760208060c05260156060527f4f6e6c79206f776e65722063616e207265766f6b65000000000000000000000060805260608160c001603582825e8051806020830101601f825f03163682375050601f19601f8251602001011690509050810190506308c379a060a0528060040160bcfd5b5f60016040516020525f5260405f20555f60026040516020525f5260405f2055005b633379ba0881186102fe576024361034176103ce576004358060a01c6103ce5760405260016040516020525f5260405f205460605260206060f35b630db065f481186103ca576024361034176103ce576004358060a01c6103ce5760405260026040516020525f5260405f205460605260206060f35b63eeb339f881186103ca576024361034176103ce576004358060a01c6103ce5760405260026040516020525f5260405f205460605260206060f35b638da5cb5b81186103ca57346103ce575f5460405260206040f35b63083e1d5281186103ca576024361034176103ce576004358060a01c6103ce5760405260016040516020525f5260405f205460605260206060f35b5f5ffd5b5f80fd02c300d003390374038f001885582093544dbc9d06001a5196a29b396895ed50d3e3758709476db92e5bab3f6c6f441903de810c00a1657679706572830004030036"
+}
