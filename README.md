@@ -42,6 +42,7 @@ This system demonstrates how blockchain can eliminate third-party intermediaries
 ---
 
 ## 🏗️ Project Structure
+
 Blockchain-ID-Verification/
 │
 ├── contracts/
