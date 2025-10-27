@@ -42,115 +42,145 @@ This system demonstrates how blockchain can eliminate third-party intermediaries
 ---
 
 ## 🏗️ Project Structure
-
 Blockchain-ID-Verification/
 │
 ├── contracts/
-│ └── IdentityVerification.vy # Vyper smart contract
+│ └── IdentityVerification.vy # Vyper smart contract for identity logic
 │
 ├── scripts/
-│ ├── deploy_cont.py # Deploys contract to Ganache
-│ └── manage_user.py # CLI for registration & verification
+│ ├── deploy_cont.py # Deploys contract to Ganache, saves config
+│ └── manage_user.py # CLI for registration, verification & revocation
 │
 ├── utils/
-│ ├── init.py
-│ └── hash_utils.py # File hashing function
+│ ├── init.py # Marks utils as a Python package
+│ └── hash_utils.py # Generates SHA-256 hash for ID files
 │
-├── build/ # ABI & Bytecode generated on deployment
-├── config.json # Contract metadata (address, owner)
-├── venv/ # Virtual environment
-└── README.md # Documentation
-
-yaml
-Copy code
-
+├── build/ # Auto-generated folder after deployment
+│ └── IdentityVerification.json # ABI and Bytecode from Vyper compiler
+│
+├── data/
+│ └── sample_id.txt # Example user document (for hashing demo)
+│
+├── config.json # Stores deployed contract address & owner info
+├── venv/ # Python virtual environment folder
+└── README.md # Project documentation
 ---
 
 ## ⚙️ Setup Instructions
+Follow these steps to set up and run the project locally 👇
 
-### 1️⃣ Clone Repository
+---
+
+### 🧩 1️⃣ Clone the Repository
+
+Clone the repository from GitHub:
 ```bash
 git clone https://github.com/rohit112-cs/Blockchain-ID-Verification.git
 cd Blockchain-ID-Verification
-2️⃣ Create & Activate Virtual Environment
-bash
-Copy code
-python -m venv venv
-# On Windows (PowerShell)
-venv\Scripts\activate
-# On macOS/Linux
-source venv/bin/activate
-3️⃣ Install Dependencies
-bash
-Copy code
-pip install web3 vyper colorama hexbytes
-4️⃣ Start Local Blockchain (Ganache)
-Ensure Ganache is running on:
 
-cpp
-Copy code
+🧱 2️⃣ Create and Activate Virtual Environment
+🪟 For Windows (PowerShell):
+    python -m venv venv
+    venv\Scripts\activate
+
+📦 3️⃣ Install Required Dependencies
+
+Install all Python libraries needed for running and deploying the project.
+
+    pip install web3 vyper colorama hexbytes
+
+🔗 4️⃣ Start Local Blockchain (Ganache)
+
+Make sure Ganache is running and configured properly.
+
+Open Ganache GUI or run Ganache CLI
+
+Confirm that it’s using the default RPC endpoint:
+
 http://127.0.0.1:8545
-🧱 Deploy Smart Contract
-Compile and deploy the contract to Ganache:
 
-bash
-Copy code
+Ensure at least 10 pre-funded accounts are visible (Ganache default).
+
+🚀 5️⃣ Deploy the Smart Contract
+
+Compile and deploy the Vyper contract to your local blockchain.
+
 python scripts/deploy_cont.py
-The deployed contract address will be saved automatically in config.json.
-
-ABI and Bytecode will be stored in the build/ directory.
-
-💻 CLI Interface – Manage Users
-Run the CLI tool:
 
 
-python scripts/manage_user.py
-Menu Options
-Option	Action
-1️⃣	Register a User
-2️⃣	Verify a User
-3️⃣	Check User Status
-4️⃣	Revoke Verification
-5️⃣	Exit
+✅ This script will:
 
-🔐 Smart Contract Overview
-python
-Copy code
-@external
-def register_user(user_hash: bytes32):
-    assert self.user_hashes[msg.sender] == empty(bytes32), "User already registered"
-    self.user_hashes[msg.sender] = user_hash
-    self.verified[msg.sender] = False
-verify_user() → Admin-only function to mark a user as verified.
+Compile the smart contract using Vyper
 
-revoke_verification() → Admin-only function to reset verification status.
+Deploy it on the Ganache blockchain via Web3.py
 
-get_user_hash() / is_verified() → View user’s hash & verification status.
+Create:
 
-🧩 Future Enhancements
-🔗 Deploy contract on Ethereum Testnet (Sepolia or Goerli)
+   build/IdentityVerification.json → ABI & Bytecode
+   config.json → Contract address & admin account
 
-🌐 Develop a web-based front-end with MetaMask integration
+🧮 7️⃣ CLI Menu Options
+Option	Description
+1️⃣	Register a new user (stores document hash)
+2️⃣	Verify a user (admin-only)
+3️⃣	Check verification status
+4️⃣	Revoke verification (admin-only)
+5️⃣	Exit CLI
 
-📦 Use IPFS for decentralized storage of documents
 
-🧰 Add multi-user access control and logging
+🧠 Example Workflow
 
-👨‍💻 Team – The Solution Seekers (Team ID: ISB-III-T033)
-Name	Role	Email
-Himanshi Negi (Team Lead)	Smart Contract Deployment & Logic	hnegiii15@gmail.com
-Rohit Pandey	Hashing Implementation & Blockchain Integration	iamrohitpandey2000@gmail.com
-Krish Joshi	Web Portal Development (Python)	joshikrish2606@gmail.com
-Swayam Gupta	System Testing & Validation	gswayam971@gmail.com
+1️⃣ Run Ganache
+2️⃣ Deploy contract → python scripts/deploy_cont.py
+3️⃣ Register a user → Choose option 1
+4️⃣ Verify the same user → Choose option 2
+5️⃣ Check status → Option 3
+6️⃣ Revoke and re-register → Option 4 then 1
+
+
+🧱 8️⃣ Folder Artifacts After Successful Setup
+
+Blockchain-ID-Verification/
+├── build/IdentityVerification.json   # Compiled contract ABI + bytecode
+├── config.json                       # Contract address & admin info
+├── contracts/                        # Vyper contract source
+├── scripts/                          # Deployment & management scripts
+├── utils/                            # Hashing functions
+└── venv/                             # Virtual environment
+
+🧩 9️⃣ Troubleshooting
+
+Issue	Fix
+ModuleNotFoundError: No module named 'web3'	Run pip install web3 inside your virtual environment
+Cannot connect to Ganache	Make sure Ganache is running at http://127.0.0.1:8545
+invalid opcode error	Redeploy the contract — delete build/ and config.json, then rerun deploy_cont.py
+ModuleNotFoundError: No module named 'utils'	Ensure utils/__init__.py exists (even empty)
+
+✅ Once all steps are done, your system will be ready to:
+
+Register identities
+
+Verify or revoke users
+
+View verification status
+
+Interact fully via blockchain on Ganache
+
+## 👨‍💻 Team – The Solution Seekers  
+**Team ID:** ISB-III-T033  
+
+| Name | Role / Responsibility | Email |
+|------|------------------------|--------|
+| **Himanshi Negi** *(Team Lead)* | Smart Contract Deployment & Logic | [hnegiii15@gmail.com](mailto:hnegiii15@gmail.com) |
+| **Rohit Pandey** | Hashing Implementation & Blockchain Integration | [iamrohitpandey2000@gmail.com](mailto:iamrohitpandey2000@gmail.com) |
+| **Krish Joshi** | Web Portal Development (Python) | [joshikrish2606@gmail.com](mailto:joshikrish2606@gmail.com) |
+| **Swayam Gupta** | System Testing & Validation | [gswayam971@gmail.com](mailto:gswayam971@gmail.com) |
+
+
 
 📊 Project Progress
+
 ✅ Smart Contract Development – Completed
 ✅ Blockchain Integration (Web3.py) – Completed
 ⚙️ Frontend Portal – Under Development
 📘 Testing & Documentation – In Progress
-
-📜 License
-This project is licensed under the MIT License.
-
-🌐 Repository
-🔗 GitHub – rohit112-cs/Blockchain-ID-Verification
